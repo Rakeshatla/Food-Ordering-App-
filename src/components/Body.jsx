@@ -1,51 +1,12 @@
 import Rescard from "./Rescard";
-import {useState,useEffect} from "react"
+import {useState} from "react"
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useResList from "../utils/useResList";
 
 const Body=()=>{
-    const [list,setList]=useState([]);
-    const[filterList,setFilterList]=useState([]);
     const [search,setSearch]=useState("");
-    // console.log(list.length)
-    useEffect(()=>{
-        fetchData()
-    },[])
-    // console.log('a')
-    const fetchData = async () => {
-        try {
-            const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTINGhttps://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-            const json = await data.json();
-            // console.log(json)
-            // console.log(json);
-            // console.log(json?.data); 
-            // console.log(json?.data?.cards);
-            // console.log(json?.data?.cards?.[1]);
-            // console.log(json?.data?.cards?.[1]?.card);
-            // console.log(json?.data?.cards?.[1]?.card?.card);
-            // console.log(json?.data?.cards?.[1]?.card?.card?.gridElements);
-            // console.log(json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle);
-            // console.log(json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-            // console.log(json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.info?.externalRatings
-            // );
-    
-            // Optional chaining for safe access
-            // const restaurantList = json1?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants[0]?.info;
-            const restaurantList = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-            ;
-            // console.log(restaurantList)
-
-    
-            if (restaurantList) {
-                setList(restaurantList); 
-                setFilterList(restaurantList); // Only set list if restaurantList is valid
-            } else {
-                console.error("Could not find the restaurants data.");
-            }
-        } catch (error) {
-            console.error("Failed to fetch data:", error);
-        }
-    };
+    const [list,filterList,setFilterList]=useResList();
     
     return list.length===0?(<Shimmer/>):(
     <div className="body">
@@ -64,13 +25,12 @@ const Body=()=>{
                     console.log("not found");
                 }
             }}>search</button>
-        </div>
-            <button className="btn1" onClick={()=>{
-                const final =list.filter((res)=>
-                    res.info.avgRating>4.3
-            );
-            setFilterList(final);
-            }}>Top Rated Restaurant</button>
+            </div>
+            <div>
+                <button className="btn1" onClick={()=>{
+                    const final =list.filter((res)=>res.info.avgRating>4.1);
+                setFilterList(final);}}>Top Rated Restaurant</button>
+            </div>
         </div>
         <div className="rcontainer">
         {filterList.map((restarunt) => (
