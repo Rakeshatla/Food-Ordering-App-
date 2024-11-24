@@ -11,7 +11,7 @@ const useResList = () => {
             const json = await data.json();
             const restaurantList = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
                 ;
-            console.log(restaurantList)
+            // console.log(restaurantList)
             // console.log(restaurantList)
 
 

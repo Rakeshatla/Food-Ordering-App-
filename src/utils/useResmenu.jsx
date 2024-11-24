@@ -13,7 +13,7 @@ const useResmenu = (resId) => {
             resId
         );
         const json = await data.json();
-        console.log(json.data.cards[2])
+        // console.table(json.data.cards[2])
         // console.log("resmenuhook")
         setMenu(json.data);
     };

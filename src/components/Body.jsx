@@ -58,7 +58,7 @@ const Body = () => {
             </div>
 
             {/* Restaurant List */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all delay-150 duration-300 ease-in-out ...">
                 {filterList.map((restaurant) => (
                     <Link
                         key={restaurant.info.id}

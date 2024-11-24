@@ -55,8 +55,7 @@ const Resmenu = () => {
         {category.map((item, index) => (
           <Rescategory key={item.card.card.title}
             data={item.card.card}
-            display={index === showindex ? true : false}
-            setShowindex={() => setShowindex(index)} />
+          />
         ))}
       </div>
     </div>
