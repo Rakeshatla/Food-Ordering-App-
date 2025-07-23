@@ -28,7 +28,7 @@ const Rescard = ({ resData, displayfav = true, displaydel = false }) => {
             {/* Restaurant Image */}
             <img
                 className="w-full h-40 object-cover rounded-md mb-4"
-                src={RES_LOGO + resData.info.cloudinaryImageId}
+                src={import.meta.env.VITE_RES_LOGO + resData.info.cloudinaryImageId}
                 alt={name}
             />
 

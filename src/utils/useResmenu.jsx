@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { MENU_URL } from "./const";
+// import { MENU_URL } from "./const";
 
 const useResmenu = (resId) => {
 
@@ -9,7 +9,7 @@ const useResmenu = (resId) => {
     }, []);
 
     const fetchmenu = async () => {
-        const data = await fetch(MENU_URL +
+        const data = await fetch(import.meta.env.VITE_MENU_URL +
             resId
         );
         const json = await data.json();

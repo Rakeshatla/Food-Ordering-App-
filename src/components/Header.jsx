@@ -16,7 +16,7 @@ const Header = () => {
     return (
         <div className="flex justify-between items-center p-4 shadow-lg">
             {/* Logo */}
-            <img className="h-16 w-1/12" src={LOGO_URL} alt="Logo" />
+            <img className="h-16 w-1/12" src={import.meta.env.VITE_LOGO_URL} alt="Logo" />
 
             {/* Navbar */}
             <div>
